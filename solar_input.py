@@ -23,6 +23,12 @@ def read_space_objects_data_from_file(input_filename):
                 star = Star()
                 parse_star_parameters(line, star)
                 objects.append(star)
+
+            elif object_type == "planet":
+                planet = Planet()
+                parse_star_parameters(line, planet)
+                objects.append(planet)
+
             else:
                 print("Unknown space object")
 
@@ -44,7 +50,14 @@ def parse_star_parameters(line, star):
     **star** — объект звезды.
     """
 
-    pass  # FIXME: not done yet
+    star.m = float(line.split()[3])
+    star.R = float(line.split()[1])
+    star.color = line.split()[2]
+    star.x = float(line.split()[4])
+    star.y = float(line.split()[5])
+    star.Vx = float(line.split()[6])
+    star.Vy = float(line.split()[7])
+
 
 def parse_planet_parameters(line, planet):
     """Считывает данные о планете из строки.
@@ -61,7 +74,13 @@ def parse_planet_parameters(line, planet):
     **line** — строка с описание планеты.
     **planet** — объект планеты.
     """
-    pass  # FIXME: not done yet...
+    planet.m = float(line.split()[3])
+    planet.R = float(line.split()[1])
+    planet.color = line.split()[2]
+    planet.x = float(line.split()[4])
+    planet.y = float(line.split()[5])
+    planet.Vx = float(line.split()[6])
+    planet.Vy = float(line.split()[7])
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
@@ -77,10 +96,15 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME: should store real values
+            if obj.type == "star":
+                s = "Star " + str(obj.R) + ' ' + str(obj.color) + ' ' + str(obj.m) + ' ' + str(obj.x) + ' ' + str(
+                    obj.y) + ' ' + str(obj.Vx) + ' ' + str(obj.Vy)
+                out_file.write(s + '\n')
+            if obj.type == "planet":
+                s = "Planet " + str(obj.R) + ' ' + str(obj.color) + ' ' + str(obj.m) + ' ' + str(obj.x) + ' ' + str(
+                    obj.y) + ' ' + str(obj.Vx) + ' ' + str(obj.Vy)
+                out_file.write(s + '\n')
 
-# FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
 
 if __name__ == "__main__":
     print("This module is not for direct call!")
