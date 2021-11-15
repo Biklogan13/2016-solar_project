@@ -53,10 +53,10 @@ def parse_star_parameters(line, star):
     star.m = float(line.split()[3]) * 5.9736 * (10**24)
     star.R = float(line.split()[1])
     star.color = line.split()[2]
-    star.x = float(line.split()[4]) * 1.5 * 10**8
-    star.y = float(line.split()[5]) * 1.5 * 10**8
-    star.Vx = float(line.split()[6]) * 36000
-    star.Vy = float(line.split()[7]) * 36000
+    star.x = float(line.split()[4]) * 1.5 * (10**11)
+    star.y = float(line.split()[5]) * 1.5 * (10**11)
+    star.Vx = float(line.split()[6]) * 1000
+    star.Vy = float(line.split()[7]) * 1000
 
 
 def parse_planet_parameters(line, planet):
@@ -74,13 +74,13 @@ def parse_planet_parameters(line, planet):
     **line** — строка с описание планеты.
     **planet** — объект планеты.
     """
-    planet.m = float(line.split()[3]) * 1.5 * 10**8
+    planet.m = float(line.split()[3]) * 1.5 * 10**11
     planet.R = float(line.split()[1])
     planet.color = line.split()[2]
-    planet.x = float(line.split()[4]) * 1.5 * 10**8
-    planet.y = float(line.split()[5]) * 1.5 * 10**8
-    planet.Vx = float(line.split()[6]) * 365000
-    planet.Vy = float(line.split()[7]) * 365000
+    planet.x = float(line.split()[4]) * 1.5 * 10**11
+    planet.y = float(line.split()[5]) * 1.5 * 10**11
+    planet.Vx = float(line.split()[6]) * 1000
+    planet.Vy = float(line.split()[7]) * 1000
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
