@@ -1,8 +1,7 @@
 # coding: utf-8
 # license: GPLv3
 
-gravitational_constant = 1.18128 * (10 ** -19)
-scale = 1
+gravitational_constant = 6.67 * (10 ** -11)
 """Гравитационная постоянная Ньютона G"""
 
 
@@ -33,12 +32,12 @@ def move_space_object(body, dt):
     """
 
     ax = body.Fx / body.m
-    body.x += (body.Vx * (dt/scale) + 0.5 * ax * (dt/scale) ** 2) / (1.5 * (10 ** 8))
-    body.Vx += ax * (dt/scale)
+    body.x += body.Vx * dt + 0.5 * ax * dt ** 2
+    body.Vx += ax * dt
 
     ay = body.Fy / body.m
-    body.y += (body.Vy * (dt/scale) + 0.5 * ay * (dt/scale) ** 2) / (1.5 * (10 ** 8))
-    body.Vy += ay * (dt/scale)
+    body.y += body.Vy * dt + 0.5 * ay * dt ** 2
+    body.Vy += ay * dt
 
 
 def recalculate_space_objects_positions(space_objects, dt):
