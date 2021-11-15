@@ -79,8 +79,8 @@ def parse_planet_parameters(line, planet):
     planet.color = line.split()[2]
     planet.x = float(line.split()[4]) * 1.5 * 10**8
     planet.y = float(line.split()[5]) * 1.5 * 10**8
-    planet.Vx = float(line.split()[6]) * 1000
-    planet.Vy = float(line.split()[7]) * 1000
+    planet.Vx = float(line.split()[6]) * 365000
+    planet.Vy = float(line.split()[7]) * 365000
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
